@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Invito Segreto</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #f6f5f2;
+      color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      max-width: 360px;
+      text-align: center;
+      padding: 32px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 16px;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      background: #111;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .message {
+      margin-top: 20px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h2>Invito riservato</h2>
+  <p>
+    Un weekend lontano dal rumore.<br>
+    Inserisci la password.
+  </p>
+
+  <input type="password" id="password" placeholder="Password" />
+  <button onclick="check()">Accedi</button>
+
+  <div class="message" id="message"></div>
+</div>
+
+<script>
+  const secret = "soloNoi"; // CAMBIA QUI
+
+  function check() {
+    const value = document.getElementById("password").value;
+    const msg = document.getElementById("message");
+
+    if (value === secret) {
+      msg.innerHTML = `
+        <strong>Complimenti.</strong><br><br>
+        Due giorni immersi nella natura.<br>
+        Sauna. Jacuzzi. Silenzio.<br><br>
+        <strong>Dolomiti.</strong><br>
+        Solo noi.
+      `;
+    } else {
+      msg.innerHTML = "Non ancora. Alcuni segreti vanno meritati.";
+    }
+  }
+</script>
+
+</body>
+</html>
